@@ -1,11 +1,5 @@
 //
 //  ViewController.swift
-//  Calcalator
-//
-//  Created by Дмитрий Корчагин on 24.11.2022.
-//
-//
-//  ViewController.swift
 //  calc
 //
 //  Created by Дмитрий Корчагин on 17.11.2022.
@@ -44,8 +38,6 @@ class ViewController: UIViewController {
         view.backgroundColor = .white
         setUpView()
         self.title = "Calculator"
-        // Make the navigation bar's title with red text.
-        
     }
     override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
         return [.portrait, .landscape]
@@ -333,7 +325,6 @@ class ViewController: UIViewController {
             result = 1
             historyTextView.text += "1% = \(result/100)\n"
             text =  "1% = \(result/100)\n"
-//            historyFullScreenTextView.text += "1% = \(result/100)\n"
             textField.text?.removeAll()
         } else {
             result = Double(textField.text!)!
@@ -348,7 +339,7 @@ class ViewController: UIViewController {
         r2 = nil
         textField.text?.removeAll()
         
-        // need other buttons
+        // need other button
 //        historyFullScreenTextView.text.removeAll()
         historyTextView.text.removeAll()
         UserDefaults.standard.set("", forKey: "text")

@@ -24,10 +24,6 @@ class HistoryViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
     }
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-//        UserDefaults.standard.set(historyTextView.text, forKey: "1")
-    }
     // MARK: -methods
     func setUpView(){
         changeNavVC()
@@ -60,7 +56,7 @@ class HistoryViewController: UIViewController {
         appearance.titleTextAttributes = [.foregroundColor: UIColor.placeholderText] // With a red background, make the title more readable.
         
         navigationItem.standardAppearance = appearance
-        navigationItem.scrollEdgeAppearance = appearance
+        navigationItem.scrollEdgeAppearance = appearance 
         navigationItem.compactAppearance = appearance // For iPhone small navigation bar in landscape.
     }
 }

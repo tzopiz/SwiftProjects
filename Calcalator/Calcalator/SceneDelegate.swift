@@ -17,18 +17,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             let window = UIWindow(windowScene: windowScene)
             let navController = UINavigationController()
             // MARK: Navigation Bar Customisation
-
-            // To change background colour.
-//            UINavigationBar.appearance().barTintColor = .init(red: 23.0/255, green: 197.0/255, blue: 157.0/255, alpha: 1.0)
-//
-//            // To change colour of tappable items.
             UINavigationBar.appearance().tintColor = .systemBlue
-//
-//            // To apply textAttributes to title i.e. colour, font etc.
-//            UINavigationBar.appearance().titleTextAttributes = [.foregroundColor : UIColor.red,
-//                                                                .font : UIFont.init(name: "AvenirNext-DemiBold", size: 22.0)!]
-//            // To control navigation bar's translucency.
-//            UINavigationBar.appearance().isTranslucent = true
             let viewController = ViewController()
             navController.viewControllers = [viewController]
             window.rootViewController = navController
