@@ -11,13 +11,15 @@ class FunctionsViewController: UIViewController, UITableViewDataSource, UITableV
 
     
     
-    var tableView = UITableView(frame: CGRect.zero, style: .grouped)
-    let list = ["Производные", "Дифференциалы", "Матрицы", "Cвободные числа и свободные векторы"]
+    var tableView = UITableView(frame: CGRect.zero, style: .insetGrouped)
+    let list = ["Производные", "Дифференциалы", "Матрицы", "Cвободные числа и свободные векторы", "Решение СЛАУ", "Литература"]
     let identifier = "MenuCell"
+    var sizes = Sizes()
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.title = "Functions"
+        self.title = "Menu"
+        sizes = Sizes(view.bounds.size.width, sizeH: view.bounds.size.height)
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: identifier)
         setUpViews()
     }
@@ -35,7 +37,7 @@ class FunctionsViewController: UIViewController, UITableViewDataSource, UITableV
     }
     func createTableView(){
         tableView.translatesAutoresizingMaskIntoConstraints = false
-        tableView.backgroundColor = .white
+        tableView.backgroundColor = .clear
         tableView.dataSource = self
         tableView.delegate = self
         createTableVieConstraint()
@@ -54,6 +56,8 @@ class FunctionsViewController: UIViewController, UITableViewDataSource, UITableV
         let number = list[indexPath.row]
         cell.textLabel?.text = number
         cell.accessoryType = .disclosureIndicator
+        cell.separatorInset = UIEdgeInsets(top: sizes.sizeSpace, left: sizes.sizeSpace, bottom: sizes.sizeSpace, right: sizes.sizeSpace)
+        
         return cell
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
