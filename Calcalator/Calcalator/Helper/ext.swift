@@ -25,12 +25,10 @@ extension String {
     }
 }
 /*
- 
  let str = "Hello, playground"
  print(str.substring(from: 7))         // playground
  print(str.substring(to: 5))           // Hello
  print(str.substring(with: 7..<11))    // play
- 
  */
 func firstNumberOf(string: String, ch: Character) -> Int{
     var i = 0

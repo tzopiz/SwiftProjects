@@ -59,6 +59,7 @@ class ViewController: UIViewController {
 
         createButtons()
     }
+    
     func addSubViews(){
        
         for i in 0..<19{
@@ -379,6 +380,7 @@ class ViewController: UIViewController {
     @objc func num9(){
         textField.text! += "9"
     }
+    
     func save(){
         UserDefaults.standard.set(text, forKey: "text")
     }
