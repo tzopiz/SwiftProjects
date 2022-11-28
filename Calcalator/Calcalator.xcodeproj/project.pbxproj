@@ -115,11 +115,6 @@
 			isa = PBXGroup;
 			children = (
 				0ADC33C9292F8F36002D4A8A /* Calcalator */,
-				0ADC33D6292F8F38002D4A8A /* Assets.xcassets */,
-				0ADC33D0292F8F36002D4A8A /* Main.storyboard */,
-				0ADC33D8292F8F38002D4A8A /* LaunchScreen.storyboard */,
-				0ADC33DB292F8F38002D4A8A /* Info.plist */,
-				0ADC33D3292F8F36002D4A8A /* Calcalator.xcdatamodeld */,
 				0ADC33E3292F8F38002D4A8A /* CalcalatorTests */,
 				0ADC33ED292F8F38002D4A8A /* CalcalatorUITests */,
 				0ADC33C8292F8F36002D4A8A /* Products */,
@@ -141,9 +136,14 @@
 			children = (
 				0ADC33CA292F8F36002D4A8A /* AppDelegate.swift */,
 				0ADC33CC292F8F36002D4A8A /* SceneDelegate.swift */,
+				0ADC33D6292F8F38002D4A8A /* Assets.xcassets */,
 				0ACFE0272930EEAC0013779F /* Controllers */,
 				0ADC33FD292F8FEC002D4A8A /* Helper */,
 				0A0DC9CF29355FDF006AF0AB /* New Group */,
+				0ADC33D0292F8F36002D4A8A /* Main.storyboard */,
+				0ADC33D8292F8F38002D4A8A /* LaunchScreen.storyboard */,
+				0ADC33DB292F8F38002D4A8A /* Info.plist */,
+				0ADC33D3292F8F36002D4A8A /* Calcalator.xcdatamodeld */,
 			);
 			path = Calcalator;
 			sourceTree = "<group>";
