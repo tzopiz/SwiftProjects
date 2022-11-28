@@ -79,7 +79,12 @@ class ViewController: UIViewController {
         navigationItem.standardAppearance = appearance
         navigationItem.scrollEdgeAppearance = appearance
         navigationItem.compactAppearance = appearance // For iPhone small navigation bar in landscape.
+        
+        self.navigationController?.navigationBar.prefersLargeTitles = false
+        self.navigationItem.largeTitleDisplayMode = .never
+
     }
+    
     func createButtonsToOpenOtherVC(){
         
         buttonMenu.backgroundColor = .clear

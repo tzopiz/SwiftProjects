@@ -11,9 +11,9 @@ class FunctionsViewController: UIViewController, UITableViewDataSource, UITableV
 
     
     
-    var tableView = UITableView(frame: CGRect.zero, style: .insetGrouped)
-    let list = ["Производные", "Дифференциалы", "Матрицы", "Cвободные числа и свободные векторы", "Решение СЛАУ", "Литература"]
-    let identifier = "MenuCell"
+    var tableView = UITableView(frame: CGRect.zero, style: .grouped)
+    let list = ["ℚ", "ℤ","Differential", "Integrales", "Matrixes", "Free numbers and vectors", "Solving SLAE", "Literature", "Trigonometric Functions", "Hyperbolic Functions"]
+    let identifier = "cell"
     var sizes = Sizes()
 
     override func viewDidLoad() {
@@ -48,6 +48,7 @@ class FunctionsViewController: UIViewController, UITableViewDataSource, UITableV
             tableView.rightAnchor.constraint(equalTo: view.rightAnchor),
             tableView.widthAnchor.constraint(equalTo: view.widthAnchor),
             tableView.heightAnchor.constraint(equalTo: view.safeAreaLayoutGuide.heightAnchor)
+            
         ])
     }
     // MARK: -DataSource
@@ -57,12 +58,24 @@ class FunctionsViewController: UIViewController, UITableViewDataSource, UITableV
         cell.textLabel?.text = number
         cell.accessoryType = .disclosureIndicator
         cell.separatorInset = UIEdgeInsets(top: sizes.sizeSpace, left: sizes.sizeSpace, bottom: sizes.sizeSpace, right: sizes.sizeSpace)
-        
         return cell
     }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return list.count
     }
+//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+//        if segue.identifier == "pushSeque" {
+//            // This segue is pushing a detailed view controller.
+//            if let indexPath = self.tableView.indexPathForSelectedRow {
+//                segue.destination.title = list[indexPath.row]
+//            }
+//            
+//            // You choose not to have a large title for the destination view controller.
+//            segue.destination.navigationItem.largeTitleDisplayMode = .never
+//        } else {
+//            // This segue is popping you back up the navigation stack.
+//        }
+//    }
     // MARK: -navController
     func changeNavVC(){
         let appearance = UINavigationBarAppearance()
@@ -73,5 +86,9 @@ class FunctionsViewController: UIViewController, UITableViewDataSource, UITableV
         navigationItem.standardAppearance = appearance
         navigationItem.scrollEdgeAppearance = appearance
         navigationItem.compactAppearance = appearance // For iPhone small navigation bar in landscape.
+        
+        self.navigationController?.navigationBar.prefersLargeTitles = true
+        self.navigationItem.largeTitleDisplayMode = .always
+        self.navigationItem.title = "Menu"
     }
 }

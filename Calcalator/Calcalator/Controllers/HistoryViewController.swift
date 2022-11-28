@@ -12,12 +12,10 @@ class HistoryViewController: UIViewController {
     var historyTextView = UITextView.createBigTextView()
     var sizes = Sizes()
     let userDefaults = UserDefaults.standard
-    var f = 1
     
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .clear
-        self.title = "History"
         historyTextView.text = userDefaults.string(forKey: "history") ?? ""
         setUpView()
     }
@@ -66,8 +64,8 @@ class HistoryViewController: UIViewController {
             historyTextView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
             historyTextView.leftAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leftAnchor),
             
-            historyTextView.widthAnchor.constraint(equalTo: view.widthAnchor),
-            historyTextView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
+            historyTextView.widthAnchor.constraint(equalTo: view.safeAreaLayoutGuide.widthAnchor),
+            historyTextView.heightAnchor.constraint(equalTo: view.safeAreaLayoutGuide.heightAnchor)
         ])
     }
     
@@ -80,6 +78,11 @@ class HistoryViewController: UIViewController {
         navigationItem.standardAppearance = appearance
         navigationItem.scrollEdgeAppearance = appearance 
         navigationItem.compactAppearance = appearance // For iPhone small navigation bar in landscape.
+        
+        self.navigationController?.navigationBar.prefersLargeTitles = true
+        self.navigationItem.largeTitleDisplayMode = .always
+        self.navigationItem.title = "History"
+
     }
 }
  
