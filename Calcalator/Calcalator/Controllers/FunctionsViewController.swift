@@ -12,7 +12,7 @@ class FunctionsViewController: UIViewController, UITableViewDataSource, UITableV
     
     
     var tableView = UITableView(frame: CGRect.zero, style: .grouped)
-    let list = ["ℚ", "ℤ","Differential", "Integrales", "Matrixes", "Free numbers and vectors", "Solving SLAE", "Literature", "Trigonometric Functions", "Hyperbolic Functions"]
+    let list = ["ℕ", "ℤ", "ℚ", "ℝ", "ℂ", "Differential", "Integrales", "Matrixes", "Free numbers and vectors", "Solving SLAE", "Literature", "Trigonometric Functions", "Hyperbolic Functions"]
     let identifier = "cell"
     var sizes = Sizes()
 
@@ -60,22 +60,17 @@ class FunctionsViewController: UIViewController, UITableViewDataSource, UITableV
         cell.separatorInset = UIEdgeInsets(top: sizes.sizeSpace, left: sizes.sizeSpace, bottom: sizes.sizeSpace, right: sizes.sizeSpace)
         return cell
     }
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) { // when u select the row
+        let currentCell = tableView.cellForRow(at: indexPath)
+        let vc = UIViewController()
+        self.navigationController?.pushViewController(vc, animated: true)
+    }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return list.count
     }
-//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//        if segue.identifier == "pushSeque" {
-//            // This segue is pushing a detailed view controller.
-//            if let indexPath = self.tableView.indexPathForSelectedRow {
-//                segue.destination.title = list[indexPath.row]
-//            }
-//            
-//            // You choose not to have a large title for the destination view controller.
-//            segue.destination.navigationItem.largeTitleDisplayMode = .never
-//        } else {
-//            // This segue is popping you back up the navigation stack.
-//        }
-//    }
+    func tableView(_ tableView: UITableView, accessoryButtonTappedForRowWith indexPath: IndexPath) {
+        let currentCell = tableView.cellForRow(at: indexPath)
+   }
     // MARK: -navController
     func changeNavVC(){
         let appearance = UINavigationBarAppearance()

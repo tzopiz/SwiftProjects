@@ -36,7 +36,7 @@ class HistoryViewController: UIViewController {
     }
     
     func createButtonClearHistory(){
-        let addButton = UIBarButtonItem(title: NSLocalizedString("Clear", comment: "---"),
+        let addButton = UIBarButtonItem(title: NSLocalizedString("Clear", comment: ""),
                                         style: .plain,
                                         target: self,
                                         action: #selector(clearHistory(_:)))
@@ -46,8 +46,8 @@ class HistoryViewController: UIViewController {
     @objc func clearHistory(_ sender: AnyObject){
         historyTextView.text.removeAll()
         // need all this strings
-        UserDefaults.standard.set("-", forKey: "history")
-        UserDefaults.standard.set("-", forKey: "text")
+        UserDefaults.standard.set("", forKey: "history")
+        UserDefaults.standard.set("", forKey: "text")
         userDefaults.removeObject(forKey: "history")
         userDefaults.removeObject(forKey: "text")
         UserDefaults.standard.removeObject(forKey: "history")

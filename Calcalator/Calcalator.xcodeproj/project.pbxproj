@@ -94,13 +94,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		0A0DC9CF29355FDF006AF0AB /* New Group */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = "New Group";
-			sourceTree = "<group>";
-		};
 		0ACFE0272930EEAC0013779F /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
@@ -139,7 +132,6 @@
 				0ADC33D6292F8F38002D4A8A /* Assets.xcassets */,
 				0ACFE0272930EEAC0013779F /* Controllers */,
 				0ADC33FD292F8FEC002D4A8A /* Helper */,
-				0A0DC9CF29355FDF006AF0AB /* New Group */,
 				0ADC33D0292F8F36002D4A8A /* Main.storyboard */,
 				0ADC33D8292F8F38002D4A8A /* LaunchScreen.storyboard */,
 				0ADC33DB292F8F38002D4A8A /* Info.plist */,
