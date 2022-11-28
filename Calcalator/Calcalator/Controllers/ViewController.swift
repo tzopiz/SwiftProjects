@@ -23,16 +23,16 @@ class ViewController: UIViewController {
     let historyTextView = UITextView.createSmallTextView()
     let textField = UITextField.createCustomTextField()
     
-    var gesture = [UISwipeGestureRecognizer]()
     let userDefaults = UserDefaults.standard
- 
-    var sizes = Sizes()
     
+    var gesture = [UISwipeGestureRecognizer]()
+    var sizes = Sizes()
     var r1: Double? = nil, r2:Double? = nil
     var result = Double()
     var answer = String()
     var text = String()
     var tag: Int = -1
+    
     override func viewDidLoad(){
         super.viewDidLoad()
         view.backgroundColor = .white
@@ -102,10 +102,12 @@ class ViewController: UIViewController {
     
     @objc func openMenuViewController(){
         let FunctionsVC = FunctionsViewController()
+        text.removeAll()
         self.navigationController?.pushViewController(FunctionsVC, animated: true)
     }
     @objc func openHistoryViewController(){
         let HistoryVC = HistoryViewController()
+        text.removeAll()
         self.navigationController?.pushViewController(HistoryVC, animated: true)
     }
     func createSwipeGestureRecognizer(){
@@ -264,7 +266,7 @@ class ViewController: UIViewController {
             case 0:
                 result = r1!/r2!
                 historyTextView.text += "\(returnResult(a: r1!)) ÷ \(returnResult(a:r2!)) = \(returnResult(a:result))\n"
-                text = "\(returnResult(a: r1!)) ÷ \(returnResult(a:r2!)) = \(returnResult(a:result))\n"
+                text += "\(returnResult(a: r1!)) ÷ \(returnResult(a:r2!)) = \(returnResult(a:result))\n"
                 r1 = nil
                 r2 = nil
                 tag = -1
@@ -272,7 +274,7 @@ class ViewController: UIViewController {
             case 1:
                 result = r1! + r2!
                 historyTextView.text += "\(returnResult(a: r1!)) + \(returnResult(a:r2!)) = \(returnResult(a:result))\n"
-                text = "\(returnResult(a: r1!)) + \(returnResult(a:r2!)) = \(returnResult(a:result))\n"
+                text += "\(returnResult(a: r1!)) + \(returnResult(a:r2!)) = \(returnResult(a:result))\n"
                 r1 = nil
                 r2 = nil
                 tag = -1
@@ -280,7 +282,7 @@ class ViewController: UIViewController {
             case 2:
                 result = r1! - r2!
                 historyTextView.text += "\(returnResult(a: r1!)) - \(returnResult(a:r2!)) = \(returnResult(a:result))\n"
-                text = "\(returnResult(a: r1!)) - \(returnResult(a:r2!)) = \(returnResult(a:result))\n"
+                text += "\(returnResult(a: r1!)) - \(returnResult(a:r2!)) = \(returnResult(a:result))\n"
                 r1 = nil
                 r2 = nil
                 tag = -1
@@ -288,7 +290,7 @@ class ViewController: UIViewController {
             case 3:
                 result = r1! * r2!
                 historyTextView.text += "\(returnResult(a: r1!)) • \(returnResult(a:r2!)) = \(returnResult(a:result))\n"
-                text = "\(returnResult(a: r1!)) • \(returnResult(a:r2!)) = \(returnResult(a:result))\n"
+                text += "\(returnResult(a: r1!)) • \(returnResult(a:r2!)) = \(returnResult(a:result))\n"
                 r1 = nil
                 r2 = nil
                 tag = -1
@@ -324,12 +326,12 @@ class ViewController: UIViewController {
         if ((textField.text?.isEmpty)!){
             result = 1
             historyTextView.text += "1% = \(result/100)\n"
-            text =  "1% = \(result/100)\n"
+            text += "1% = \(result/100)\n"
             textField.text?.removeAll()
         } else {
             result = Double(textField.text!)!
             historyTextView.text += "\(returnResult(a: result))% = \(returnResult(a: result/100))\n"
-            text = "\(returnResult(a: result))% = \(returnResult(a: result/100))\n"
+            text += "\(returnResult(a: result))% = \(returnResult(a: result/100))\n"
             textField.text?.removeAll()
         }
         save()
@@ -338,11 +340,9 @@ class ViewController: UIViewController {
         r1 = nil
         r2 = nil
         textField.text?.removeAll()
-        
-        // need other button
-//        historyFullScreenTextView.text.removeAll()
         historyTextView.text.removeAll()
         UserDefaults.standard.set("", forKey: "text")
+        userDefaults.removeObject(forKey: "text")
     }
     
     @objc func num0(){

@@ -27,12 +27,33 @@ class HistoryViewController: UIViewController {
     // MARK: -methods
     func setUpView(){
         changeNavVC()
+        createButtonClearHistory()
         sizes = Sizes(view.bounds.size.width, sizeH: view.bounds.size.height)
         addSubViews()
         createHistoryTextViewConstraint()
     }
     func addSubViews(){
         view.addSubview(historyTextView)
+    }
+    
+    func createButtonClearHistory(){
+        let addButton = UIBarButtonItem(title: NSLocalizedString("Clear", comment: "---"),
+                                        style: .plain,
+                                        target: self,
+                                        action: #selector(clearHistory(_:)))
+        navigationItem.rightBarButtonItem = addButton
+        
+    }
+    @objc func clearHistory(_ sender: AnyObject){
+        historyTextView.text.removeAll()
+        UserDefaults.standard.set("-", forKey: "history")
+        UserDefaults.standard.set("-", forKey: "text")
+        userDefaults.removeObject(forKey: "history")
+        userDefaults.removeObject(forKey: "text")
+        UserDefaults.standard.removeObject(forKey: "history")
+        UserDefaults.standard.removeObject(forKey: "text")
+        print(userDefaults.string(forKey: "text"), "\n----")
+        print(userDefaults.string(forKey: "history"))
     }
     func createHistoryTextViewConstraint(){
         if let text = userDefaults.string(forKey: "text"){
@@ -49,6 +70,7 @@ class HistoryViewController: UIViewController {
             historyTextView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
         ])
     }
+    
     func changeNavVC(){
         let appearance = UINavigationBarAppearance()
         appearance.configureWithOpaqueBackground()
