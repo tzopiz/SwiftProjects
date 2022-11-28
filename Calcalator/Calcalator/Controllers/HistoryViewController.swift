@@ -52,8 +52,6 @@ class HistoryViewController: UIViewController {
         userDefaults.removeObject(forKey: "text")
         UserDefaults.standard.removeObject(forKey: "history")
         UserDefaults.standard.removeObject(forKey: "text")
-        print(userDefaults.string(forKey: "text"), "\n----")
-        print(userDefaults.string(forKey: "history"))
     }
     func createHistoryTextViewConstraint(){
         if let text = userDefaults.string(forKey: "text"){
@@ -70,7 +68,6 @@ class HistoryViewController: UIViewController {
             historyTextView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor)
         ])
     }
-    
     func changeNavVC(){
         let appearance = UINavigationBarAppearance()
         appearance.configureWithOpaqueBackground()
