@@ -58,7 +58,11 @@ class ViewController: UIViewController, UIViewControllerTransitioningDelegate, U
     
     // MARK: - methods
     
-    func navigationController(_ navigationController: UINavigationController, animationControllerFor operation: UINavigationController.Operation, from fromVC: UIViewController, to toVC: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+    func navigationController
+    (_ navigationController: UINavigationController,
+     animationControllerFor operation: UINavigationController.Operation,
+     from fromVC: UIViewController,
+     to toVC: UIViewController) -> UIViewControllerAnimatedTransitioning? {
            simpleOver.popStyle = (operation == .pop)
            return simpleOver
        }

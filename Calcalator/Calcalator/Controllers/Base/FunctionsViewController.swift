@@ -51,8 +51,30 @@ class FunctionsViewController: UIViewController, UITableViewDelegate{
     }
     // MARK: -DataSource
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) { // when u select the row
-        let vc = UIViewController()
-        self.navigationController?.pushViewController(vc, animated: true)
+        switch indexPath.row{
+        case 0:
+            let nvc = NViewController()
+            self.navigationController?.pushViewController(nvc, animated: true)
+        case 1:
+            let zvc = ZViewController()
+            self.navigationController?.pushViewController(zvc, animated: true)
+        case 2:
+            let qvc = QViewController()
+            self.navigationController?.pushViewController(qvc, animated: true)
+        case 3:
+            let rvc = RViewController()
+            self.navigationController?.pushViewController(rvc, animated: true)
+        case 4:
+            let cvc = CViewController()
+            self.navigationController?.pushViewController(cvc, animated: true)
+        case 5:
+            print("\(indexPath.row)")
+        case 6:
+            print("\(indexPath.row)")
+        default:
+            break
+            
+        }
         tableView.deselectRow(at: indexPath, animated: true)
     }
     // MARK: -navController
