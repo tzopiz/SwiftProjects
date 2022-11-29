@@ -35,7 +35,7 @@ class FunctionsViewController: UIViewController, UITableViewDelegate{
     }
     func createTableView(){
         tableView.translatesAutoresizingMaskIntoConstraints = false
-        tableView.backgroundColor = .clear
+        tableView.backgroundColor = .white
         tableView.delegate = self
         tableView.dataSource = dataSource
         createTableVieConstraint()
