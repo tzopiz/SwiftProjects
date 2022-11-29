@@ -435,7 +435,6 @@ class ViewController: UIViewController, UIViewControllerTransitioningDelegate, U
 // MARK: - Tasks:
 /*
  - ввод не одного выражения а столько сколько угодно
- - заблокировать ориентацию
  - кнопка равно сбрасывает введенное число
  - сделать наполение новых контроллеров
  */

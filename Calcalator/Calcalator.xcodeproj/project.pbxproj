@@ -10,6 +10,7 @@
 		0A13141F2935E0580041540E /* MenuDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A13141E2935E0580041540E /* MenuDataSource.swift */; };
 		0A1314242935ED970041540E /* Animation + ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A1314232935ED970041540E /* Animation + ext.swift */; };
 		0A13142B2935FB2B0041540E /* Menu.json in Resources */ = {isa = PBXBuildFile; fileRef = 0A1314292935FB2B0041540E /* Menu.json */; };
+		0A1314312935FE950041540E /* NViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A1314302935FE950041540E /* NViewController.swift */; };
 		0ACFE0262930EEA60013779F /* HistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ACFE0252930EEA60013779F /* HistoryViewController.swift */; };
 		0ACFE0292930F7A90013779F /* FunctionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ACFE0282930F7A90013779F /* FunctionsViewController.swift */; };
 		0ADC33CB292F8F36002D4A8A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ADC33CA292F8F36002D4A8A /* AppDelegate.swift */; };
@@ -51,6 +52,7 @@
 		0A13141E2935E0580041540E /* MenuDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuDataSource.swift; sourceTree = "<group>"; };
 		0A1314232935ED970041540E /* Animation + ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Animation + ext.swift"; sourceTree = "<group>"; };
 		0A1314292935FB2B0041540E /* Menu.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Menu.json; sourceTree = "<group>"; };
+		0A1314302935FE950041540E /* NViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = NViewController.swift; path = Calcalator/Controllers/NViewController.swift; sourceTree = SOURCE_ROOT; };
 		0ACFE0252930EEA60013779F /* HistoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryViewController.swift; sourceTree = "<group>"; };
 		0ACFE0282930F7A90013779F /* FunctionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FunctionsViewController.swift; sourceTree = "<group>"; };
 		0ADC33C7292F8F36002D4A8A /* Calcalator.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Calcalator.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -100,12 +102,29 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		0ACFE0272930EEAC0013779F /* Controllers */ = {
+		0A13142C2935FE4E0041540E /* Base */ = {
 			isa = PBXGroup;
 			children = (
 				0ADC33CE292F8F36002D4A8A /* ViewController.swift */,
 				0ACFE0252930EEA60013779F /* HistoryViewController.swift */,
 				0ACFE0282930F7A90013779F /* FunctionsViewController.swift */,
+			);
+			path = Base;
+			sourceTree = "<group>";
+		};
+		0A13142D2935FE560041540E /* Menu */ = {
+			isa = PBXGroup;
+			children = (
+				0A1314302935FE950041540E /* NViewController.swift */,
+			);
+			path = Menu;
+			sourceTree = "<group>";
+		};
+		0ACFE0272930EEAC0013779F /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				0A13142D2935FE560041540E /* Menu */,
+				0A13142C2935FE4E0041540E /* Base */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -312,6 +331,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0ACFE0292930F7A90013779F /* FunctionsViewController.swift in Sources */,
+				0A1314312935FE950041540E /* NViewController.swift in Sources */,
 				0ADC33CF292F8F36002D4A8A /* ViewController.swift in Sources */,
 				0ADC3408292F8FEC002D4A8A /* UIView + ext.swift in Sources */,
 				0A13141F2935E0580041540E /* MenuDataSource.swift in Sources */,
