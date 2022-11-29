@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, UIViewControllerTransitioningDelegate, UINavigationControllerDelegate {
     
     
     // MARK: - Variables
@@ -23,6 +23,18 @@ class ViewController: UIViewController {
     let historyTextView = UITextView.createSmallTextView()
     let textField = UITextField.createCustomTextField()
     
+    let gestureViews: [UIView] = {
+        var views = [UIView]()
+        for _ in 0..<2{
+            let view = UIView()
+            view.translatesAutoresizingMaskIntoConstraints = false
+            view.backgroundColor = .clear
+            views.append(view)
+        }
+        return views
+    }()
+    let simpleOver = SimpleOver()
+    
     let userDefaults = UserDefaults.standard
     
     var gesture = [UISwipeGestureRecognizer]()
@@ -32,6 +44,7 @@ class ViewController: UIViewController {
     var answer = String()
     var text = String()
     var tag: Int = -1
+    
     
     override func viewDidLoad(){
         super.viewDidLoad()
@@ -44,11 +57,17 @@ class ViewController: UIViewController {
     }
     
     // MARK: - methods
+    
+    func navigationController(_ navigationController: UINavigationController, animationControllerFor operation: UINavigationController.Operation, from fromVC: UIViewController, to toVC: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+           simpleOver.popStyle = (operation == .pop)
+           return simpleOver
+       }
+    
     func setUpView(){
         changeNavVC()
         sizes = Sizes(view.bounds.size.width, sizeH: view.bounds.size.height)
         addSubViews()
-        
+        createGestureViews()
         createButtonsToOpenOtherVC()
         
         createSwipeGestureRecognizer()
@@ -59,7 +78,6 @@ class ViewController: UIViewController {
 
         createButtons()
     }
-    
     func addSubViews(){
        
         for i in 0..<19{
@@ -69,7 +87,10 @@ class ViewController: UIViewController {
         view.addSubview(buttonHistory)
         view.addSubview(historyTextView)
         view.addSubview(textField)
+        view.addSubview(gestureViews[0])
+        view.addSubview(gestureViews[1])
     }
+    
     func changeNavVC(){
         let appearance = UINavigationBarAppearance()
         appearance.configureWithOpaqueBackground()
@@ -82,7 +103,7 @@ class ViewController: UIViewController {
         
         self.navigationController?.navigationBar.prefersLargeTitles = false
         self.navigationItem.largeTitleDisplayMode = .never
-
+        navigationController?.delegate = self
     }
     
     func createButtonsToOpenOtherVC(){
@@ -105,9 +126,27 @@ class ViewController: UIViewController {
         buttonMenu.addTarget(self, action: #selector(openMenuViewController), for: .touchUpInside)
         buttonHistory.addTarget(self, action: #selector(openHistoryViewController), for: .touchUpInside)
     }
+    func createGestureViews(){
+        NSLayoutConstraint.activate([
+            gestureViews[0].topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            gestureViews[0].leftAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leftAnchor),
+            gestureViews[0].heightAnchor.constraint(equalToConstant: view.bounds.size.height/2),
+            gestureViews[0].widthAnchor.constraint(equalToConstant: view.bounds.size.width/4)
+        ])
+        NSLayoutConstraint.activate([
+            gestureViews[1].topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            gestureViews[1].rightAnchor.constraint(equalTo: view.safeAreaLayoutGuide.rightAnchor),
+            gestureViews[1].heightAnchor.constraint(equalToConstant: view.bounds.size.height/2),
+            gestureViews[1].widthAnchor.constraint(equalToConstant: view.bounds.size.width/4)
+        ])
+    }
     
     @objc func openMenuViewController(){
         let FunctionsVC = FunctionsViewController()
+//        let animator = UIViewPropertyAnimator(duration: 0.3, curve: .linear) {
+//            self.view.frame = self.view.frame.offsetBy(dx:self.view.bounds.width, dy:0)
+//        }
+//        animator.startAnimation()
         text.removeAll()
         self.navigationController?.pushViewController(FunctionsVC, animated: true)
     }
@@ -122,11 +161,13 @@ class ViewController: UIViewController {
                 let g = UISwipeGestureRecognizer(target: self, action: #selector(openMenuViewController))
                 g.direction = .right
                 buttonMenu.addGestureRecognizer(g)
+                gestureViews[0].addGestureRecognizer(g)
                 gesture.append(g)
             } else {
                 let g = UISwipeGestureRecognizer(target: self, action: #selector(openHistoryViewController))
                 g.direction = .left
                 buttonHistory.addGestureRecognizer(g)
+                gestureViews[1].addGestureRecognizer(g)
                 gesture.append(g)
             }
         }
@@ -393,7 +434,6 @@ class ViewController: UIViewController {
 }
 // MARK: - Tasks:
 /*
- - кнопка отчистки history in gistorytextview
  - ввод не одного выражения а столько сколько угодно
  - заблокировать ориентацию
  - кнопка равно сбрасывает введенное число

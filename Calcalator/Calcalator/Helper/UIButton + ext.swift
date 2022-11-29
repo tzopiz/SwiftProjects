@@ -18,6 +18,7 @@ extension UIButton{
             button.setTitle(UIButton.buttonsTitles[i], for: .normal)
             button.layer.cornerRadius = 10
             button.backgroundColor = #colorLiteral(red: 0.6620279901, green: 0.6620279901, blue: 0.6620279901, alpha: 0.714631165)
+            button.backgroundColor = .systemGray5
 //            button.setTitleShadowColor(.systemBlue, for: .highlighted)
 //            button.setTitleColor(.placeholderText, for: .highlighted)
             button.titleLabel?.font = UIFont(name: "AppleSDGothicNeo-Medium", size: 30)!

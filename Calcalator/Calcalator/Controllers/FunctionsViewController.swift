@@ -7,13 +7,11 @@
 
 import UIKit
 
-class FunctionsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate{
-
-    
+class FunctionsViewController: UIViewController, UITableViewDelegate{
     
     var tableView = UITableView(frame: CGRect.zero, style: .grouped)
-    let list = ["ℕ", "ℤ", "ℚ", "ℝ", "ℂ", "Differential", "Integrales", "Matrixes", "Free numbers and vectors", "Solving SLAE", "Literature", "Trigonometric Functions", "Hyperbolic Functions"]
-    let identifier = "cell"
+    let dataSource = MenuDataSource()
+    let identifier = "Cell"
     var sizes = Sizes()
 
     override func viewDidLoad() {
@@ -38,8 +36,8 @@ class FunctionsViewController: UIViewController, UITableViewDataSource, UITableV
     func createTableView(){
         tableView.translatesAutoresizingMaskIntoConstraints = false
         tableView.backgroundColor = .clear
-        tableView.dataSource = self
         tableView.delegate = self
+        tableView.dataSource = dataSource
         createTableVieConstraint()
     }
     func createTableVieConstraint(){
@@ -52,25 +50,11 @@ class FunctionsViewController: UIViewController, UITableViewDataSource, UITableV
         ])
     }
     // MARK: -DataSource
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: identifier, for: indexPath)
-        let number = list[indexPath.row]
-        cell.textLabel?.text = number
-        cell.accessoryType = .disclosureIndicator
-        cell.separatorInset = UIEdgeInsets(top: sizes.sizeSpace, left: sizes.sizeSpace, bottom: sizes.sizeSpace, right: sizes.sizeSpace)
-        return cell
-    }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) { // when u select the row
-        let currentCell = tableView.cellForRow(at: indexPath)
         let vc = UIViewController()
         self.navigationController?.pushViewController(vc, animated: true)
+        tableView.deselectRow(at: indexPath, animated: true)
     }
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return list.count
-    }
-    func tableView(_ tableView: UITableView, accessoryButtonTappedForRowWith indexPath: IndexPath) {
-        let currentCell = tableView.cellForRow(at: indexPath)
-   }
     // MARK: -navController
     func changeNavVC(){
         let appearance = UINavigationBarAppearance()
@@ -85,5 +69,12 @@ class FunctionsViewController: UIViewController, UITableViewDataSource, UITableV
         self.navigationController?.navigationBar.prefersLargeTitles = true
         self.navigationItem.largeTitleDisplayMode = .always
         self.navigationItem.title = "Menu"
+    }
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath){
+        let selectionColor = UIView() as UIView
+        selectionColor.layer.borderWidth = 1
+        selectionColor.layer.borderColor = UIColor.systemGray5.cgColor
+        selectionColor.backgroundColor = UIColor.systemGray5
+        cell.selectedBackgroundView = selectionColor
     }
 }
