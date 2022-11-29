@@ -1,5 +1,5 @@
 //
-//  CViewController.swift
+//  ZViewController.swift
 //  Calcalator
 //
 //  Created by Дмитрий Корчагин on 29.11.2022.
@@ -7,12 +7,11 @@
 
 import UIKit
 
-class CViewController: UIViewController {
+class ZViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
     }
-
+    
 }
