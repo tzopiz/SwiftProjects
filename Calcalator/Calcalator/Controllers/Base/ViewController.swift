@@ -48,7 +48,7 @@ class ViewController: UIViewController, UIViewControllerTransitioningDelegate, U
     
     override func viewDidLoad(){
         super.viewDidLoad()
-        view.backgroundColor = .clear
+        view.backgroundColor = .white
         setUpView()
         self.title = "Calculator"
     }
@@ -63,7 +63,7 @@ class ViewController: UIViewController, UIViewControllerTransitioningDelegate, U
      animationControllerFor operation: UINavigationController.Operation,
      from fromVC: UIViewController,
      to toVC: UIViewController) -> UIViewControllerAnimatedTransitioning? {
-           simpleOver.popStyle = (operation == .pop)
+        simpleOver.popStyle = (operation == .push)
            return simpleOver
        }
     
@@ -83,7 +83,8 @@ class ViewController: UIViewController, UIViewControllerTransitioningDelegate, U
         createButtons()
     }
     func addSubViews(){
-       
+        view.addSubview(gestureViews[0])
+        view.addSubview(gestureViews[1])
         for i in 0..<19{
             view.addSubview(buttons[i])
         }
@@ -91,8 +92,7 @@ class ViewController: UIViewController, UIViewControllerTransitioningDelegate, U
         view.addSubview(buttonHistory)
         view.addSubview(historyTextView)
         view.addSubview(textField)
-        view.addSubview(gestureViews[0])
-        view.addSubview(gestureViews[1])
+
     }
     
     func changeNavVC(){

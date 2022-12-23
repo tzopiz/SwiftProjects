@@ -18,7 +18,7 @@ extension UIButton{
             button.setTitle(UIButton.buttonsTitles[i], for: .normal)
             button.layer.cornerRadius = 10
             button.backgroundColor = #colorLiteral(red: 0.6620279901, green: 0.6620279901, blue: 0.6620279901, alpha: 0.714631165)
-            button.backgroundColor = .systemGray5
+            button.backgroundColor = .systemGray4
             button.titleLabel?.font = UIFont(name: "AppleSDGothicNeo-Medium", size: 30)!
             button.tag = 1
             if i == 0{
@@ -28,23 +28,10 @@ extension UIButton{
         }
         return buttons
     }
-    static func createShowHistoryButton(with images: [UIImage]) -> [UIButton]{
-        var buttons = [UIButton]()
-        for _ in 0..<2{
-            let button = UIButton(type: .system)
-            button.backgroundColor = .systemGray5
-            button.setImage(images[2], for: .normal)
-            button.imageView?.contentMode = .scaleToFill
-            button.translatesAutoresizingMaskIntoConstraints = false
-            button.layer.cornerRadius = 4
-            buttons.append(button)
-        }
-        buttons[1].isHidden = true
-        return buttons
-    }
     
 }
 
 class myButton: UIButton{
     
 }
+ 
