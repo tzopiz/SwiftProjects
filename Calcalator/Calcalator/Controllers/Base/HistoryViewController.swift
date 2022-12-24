@@ -27,7 +27,7 @@ class HistoryViewController: UIViewController {
     func setUpView(){
         changeNavVC()
         createButtonClearHistory()
-        sizes = Sizes(view.bounds.size.width, sizeH: view.bounds.size.height)
+        sizes = Sizes(view.bounds.size.width, view.bounds.size.height)
         addSubViews()
         createHistoryTextViewConstraint()
     }
@@ -80,7 +80,7 @@ class HistoryViewController: UIViewController {
         navigationItem.compactAppearance = appearance // For iPhone small navigation bar in landscape.
         
         self.navigationController?.navigationBar.prefersLargeTitles = true
-        self.navigationItem.largeTitleDisplayMode = .always
+        self.navigationItem.largeTitleDisplayMode = .automatic
         self.navigationItem.title = "History"
 
     }

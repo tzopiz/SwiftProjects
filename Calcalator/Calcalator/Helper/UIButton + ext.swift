@@ -31,7 +31,3 @@ extension UIButton{
     
 }
 
-class myButton: UIButton{
-    
-}
- 

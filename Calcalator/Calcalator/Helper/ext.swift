@@ -72,7 +72,7 @@ struct Sizes{
         sizeDivide = 100
     }
     
-    init(_ sizeW: CGFloat, sizeH: CGFloat){
+    init(_ sizeW: CGFloat,_ sizeH: CGFloat){
         sizeButton = determineSizeButtons(sizeW)
         sizeSpace = sizeButton/5
         sizeDivide = sizeH - sizeButton*7

@@ -38,7 +38,7 @@ class MenuDataSource: NSObject, UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
         cell.textLabel?.text = flavor
         cell.accessoryType = .disclosureIndicator
-        cell.separatorInset = UIEdgeInsets(top: 15, left: 15, bottom: 15, right: 15)
+        cell.separatorInset = UIEdgeInsets(top: 100, left: 10, bottom: 0, right: 0)
         return cell
     }
     

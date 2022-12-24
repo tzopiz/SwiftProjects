@@ -7,9 +7,9 @@
 
 import UIKit
 
-class FunctionsViewController: UIViewController, UITableViewDelegate{
+class FunctionsViewController: UIViewController, UITableViewDelegate, UIViewControllerTransitioningDelegate, UINavigationControllerDelegate{
     
-    var tableView = UITableView(frame: CGRect.zero, style: .grouped)
+    var tableView = UITableView(frame: CGRect.zero, style: .plain)
     let dataSource = MenuDataSource()
     let identifier = "Cell"
     var sizes = Sizes()
@@ -17,7 +17,7 @@ class FunctionsViewController: UIViewController, UITableViewDelegate{
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = "Menu"
-        sizes = Sizes(view.bounds.size.width, sizeH: view.bounds.size.height)
+        sizes = Sizes(view.bounds.size.width, view.bounds.size.height)
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: identifier)
         setUpViews()
     }
@@ -42,13 +42,14 @@ class FunctionsViewController: UIViewController, UITableViewDelegate{
     }
     func createTableVieConstraint(){
         NSLayoutConstraint.activate([
-            tableView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            tableView.topAnchor.constraint(equalTo: view.topAnchor),
             tableView.rightAnchor.constraint(equalTo: view.rightAnchor),
             tableView.widthAnchor.constraint(equalTo: view.widthAnchor),
-            tableView.heightAnchor.constraint(equalTo: view.safeAreaLayoutGuide.heightAnchor)
+            tableView.heightAnchor.constraint(equalTo: view.heightAnchor)
             
         ])
     }
+
     // MARK: -DataSource
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) { // when u select the row
         switch indexPath.row{
@@ -68,7 +69,9 @@ class FunctionsViewController: UIViewController, UITableViewDelegate{
             let cvc = CViewController()
             self.navigationController?.pushViewController(cvc, animated: true)
         case 5:
-            print("\(indexPath.row)")
+            let calcvc = CalcViewController()
+            self.navigationItem.largeTitleDisplayMode = .never
+            self.navigationController?.pushViewController(calcvc, animated: true)
         case 6:
             print("\(indexPath.row)")
         default:
@@ -88,9 +91,10 @@ class FunctionsViewController: UIViewController, UITableViewDelegate{
         navigationItem.scrollEdgeAppearance = appearance
         navigationItem.compactAppearance = appearance // For iPhone small navigation bar in landscape.
         
-        self.navigationController?.navigationBar.prefersLargeTitles = true
-        self.navigationItem.largeTitleDisplayMode = .always
+        self.navigationController?.navigationBar.prefersLargeTitles = false
+        self.navigationItem.largeTitleDisplayMode = .automatic
         self.navigationItem.title = "Menu"
+
     }
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath){
         let selectionColor = UIView() as UIView
@@ -98,5 +102,6 @@ class FunctionsViewController: UIViewController, UITableViewDelegate{
         selectionColor.layer.borderColor = UIColor.systemGray5.cgColor
         selectionColor.backgroundColor = UIColor.systemGray5
         cell.selectedBackgroundView = selectionColor
+        cell.separatorInset = UIEdgeInsets(top: 100, left: 0, bottom: 0, right: 0)
     }
 }

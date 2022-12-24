@@ -18,7 +18,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             let navController = UINavigationController()
             // MARK: Navigation Bar Customisation
             UINavigationBar.appearance().tintColor = .systemBlue
-            let viewController = ViewController()
+            let viewController = FunctionsViewController()
             navController.viewControllers = [viewController]
             window.rootViewController = navController
             self.window = window

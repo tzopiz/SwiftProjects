@@ -1,4 +1,11 @@
 //
+//  CalcViewController.swift
+//  Calcalator
+//
+//  Created by Дмитрий Корчагин on 23.12.2022.
+//
+
+//
 //  ViewController.swift
 //  calc
 //
@@ -7,7 +14,7 @@
 
 import UIKit
 
-class ViewController: UIViewController, UIViewControllerTransitioningDelegate, UINavigationControllerDelegate {
+class CalcViewController: UIViewController, UIViewControllerTransitioningDelegate, UINavigationControllerDelegate {
     
     
     // MARK: - Variables
@@ -17,23 +24,10 @@ class ViewController: UIViewController, UIViewControllerTransitioningDelegate, U
     let imageHistoryPressed = UIImage(named: "historyPressed")
     
     let buttons = UIButton.createNumbersButtons()
-    let buttonMenu = UIButton(type: .system)
     let buttonHistory = UIButton(type: .system)
     
     let historyTextView = UITextView.createSmallTextView()
     let textField = UITextField.createCustomTextField()
-    
-    let gestureViews: [UIView] = {
-        var views = [UIView]()
-        for _ in 0..<2{
-            let view = UIView()
-            view.translatesAutoresizingMaskIntoConstraints = false
-            view.backgroundColor = .clear
-            views.append(view)
-        }
-        return views
-    }()
-    let simpleOver = SimpleOver()
     
     let userDefaults = UserDefaults.standard
     
@@ -49,33 +43,19 @@ class ViewController: UIViewController, UIViewControllerTransitioningDelegate, U
     override func viewDidLoad(){
         super.viewDidLoad()
         view.backgroundColor = .white
-        setUpView()
         self.title = "Calculator"
+        setUpView()
     }
     override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
         return [.portrait, .landscape]
     }
-    
     // MARK: - methods
-    
-    func navigationController
-    (_ navigationController: UINavigationController,
-     animationControllerFor operation: UINavigationController.Operation,
-     from fromVC: UIViewController,
-     to toVC: UIViewController) -> UIViewControllerAnimatedTransitioning? {
-        simpleOver.popStyle = (operation == .push)
-           return simpleOver
-       }
-    
+
     func setUpView(){
         changeNavVC()
-        sizes = Sizes(view.bounds.size.width, sizeH: view.bounds.size.height)
+        sizes = Sizes(view.bounds.size.width, view.bounds.size.height)
         addSubViews()
-        createGestureViews()
         createButtonsToOpenOtherVC()
-        
-        createSwipeGestureRecognizer()
-        
         createTextFieldConstraint()
 
         createHistoryTextViewConstraints()
@@ -83,15 +63,12 @@ class ViewController: UIViewController, UIViewControllerTransitioningDelegate, U
         createButtons()
     }
     func addSubViews(){
-        view.addSubview(gestureViews[0])
-        view.addSubview(gestureViews[1])
-        for i in 0..<19{
-            view.addSubview(buttons[i])
-        }
-        view.addSubview(buttonMenu)
         view.addSubview(buttonHistory)
         view.addSubview(historyTextView)
         view.addSubview(textField)
+        for i in 0..<19{
+            view.addSubview(buttons[i])
+        }
 
     }
     
@@ -105,78 +82,29 @@ class ViewController: UIViewController, UIViewControllerTransitioningDelegate, U
         navigationItem.scrollEdgeAppearance = appearance
         navigationItem.compactAppearance = appearance // For iPhone small navigation bar in landscape.
         
-        self.navigationController?.navigationBar.prefersLargeTitles = false
-        self.navigationItem.largeTitleDisplayMode = .never
+        self.navigationController?.navigationBar.prefersLargeTitles = true
+        self.navigationItem.largeTitleDisplayMode = .automatic
         navigationController?.delegate = self
     }
     
     func createButtonsToOpenOtherVC(){
         
-        buttonMenu.backgroundColor = .clear
         buttonHistory.backgroundColor = .clear
-        buttonMenu.translatesAutoresizingMaskIntoConstraints = false
         buttonHistory.translatesAutoresizingMaskIntoConstraints = false
         
-        buttonMenu.setImage(imageMenu!.scaleImageToFitSize(size: CGSize(width: (navigationController?.navigationBar.bounds.size.height)! - 5, height: (navigationController?.navigationBar.bounds.size.height)! - 5)), for: .normal)
-        buttonMenu.setImage(imageMenuPressed!.scaleImageToFitSize(size: CGSize(width: (navigationController?.navigationBar.bounds.size.height)! - 5, height: (navigationController?.navigationBar.bounds.size.height)! - 5)), for: .highlighted)
         buttonHistory.setImage(imageHistory!.scaleImageToFitSize(size: CGSize(width: (navigationController?.navigationBar.bounds.size.height)! - 5, height: (navigationController?.navigationBar.bounds.size.height)! - 5)), for: .normal)
         buttonHistory.setImage(imageHistoryPressed!.scaleImageToFitSize(size: CGSize(width: (navigationController?.navigationBar.bounds.size.height)! - 5, height: (navigationController?.navigationBar.bounds.size.height)! - 5)), for: .highlighted)
-        navigationItem.leftBarButtonItem = UIBarButtonItem(customView: buttonMenu)
         navigationItem.rightBarButtonItem = UIBarButtonItem(customView: buttonHistory)
-        buttonMenu.bounds.size.width = (navigationController?.navigationBar.bounds.size.height)!
-        buttonMenu.bounds.size.height = (navigationController?.navigationBar.bounds.size.height)!
         buttonHistory.bounds.size.width = (navigationController?.navigationBar.bounds.size.height)!
         buttonHistory.bounds.size.height = (navigationController?.navigationBar.bounds.size.height)!
-        buttonMenu.addTarget(self, action: #selector(openMenuViewController), for: .touchUpInside)
         buttonHistory.addTarget(self, action: #selector(openHistoryViewController), for: .touchUpInside)
     }
-    func createGestureViews(){
-        NSLayoutConstraint.activate([
-            gestureViews[0].topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
-            gestureViews[0].leftAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leftAnchor),
-            gestureViews[0].heightAnchor.constraint(equalToConstant: view.bounds.size.height/2),
-            gestureViews[0].widthAnchor.constraint(equalToConstant: view.bounds.size.width/4)
-        ])
-        NSLayoutConstraint.activate([
-            gestureViews[1].topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
-            gestureViews[1].rightAnchor.constraint(equalTo: view.safeAreaLayoutGuide.rightAnchor),
-            gestureViews[1].heightAnchor.constraint(equalToConstant: view.bounds.size.height/2),
-            gestureViews[1].widthAnchor.constraint(equalToConstant: view.bounds.size.width/4)
-        ])
-    }
     
-    @objc func openMenuViewController(){
-        let FunctionsVC = FunctionsViewController()
-//        let animator = UIViewPropertyAnimator(duration: 0.3, curve: .linear) {
-//            self.view.frame = self.view.frame.offsetBy(dx:self.view.bounds.width, dy:0)
-//        }
-//        animator.startAnimation()
-        text.removeAll()
-        self.navigationController?.pushViewController(FunctionsVC, animated: true)
-    }
     @objc func openHistoryViewController(){
         let HistoryVC = HistoryViewController()
         text.removeAll()
         self.navigationController?.pushViewController(HistoryVC, animated: true)
     }
-    func createSwipeGestureRecognizer(){
-        for i in 0..<2{
-            if i == 0{
-                let g = UISwipeGestureRecognizer(target: self, action: #selector(openMenuViewController))
-                g.direction = .right
-                buttonMenu.addGestureRecognizer(g)
-                gestureViews[0].addGestureRecognizer(g)
-                gesture.append(g)
-            } else {
-                let g = UISwipeGestureRecognizer(target: self, action: #selector(openHistoryViewController))
-                g.direction = .left
-                buttonHistory.addGestureRecognizer(g)
-                gestureViews[1].addGestureRecognizer(g)
-                gesture.append(g)
-            }
-        }
-    }
-    
     func createHistoryTextViewConstraints(){
         NSLayoutConstraint.activate([
             historyTextView.bottomAnchor.constraint(equalTo: textField.topAnchor, constant: -sizes.sizeSpace),
