@@ -16,7 +16,6 @@ class FunctionsViewController: UIViewController, UITableViewDelegate, UIViewCont
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.title = "Menu"
         sizes = Sizes(view.bounds.size.width, view.bounds.size.height)
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: identifier)
         setUpViews()
@@ -70,10 +69,13 @@ class FunctionsViewController: UIViewController, UITableViewDelegate, UIViewCont
             self.navigationController?.pushViewController(cvc, animated: true)
         case 5:
             let calcvc = CalcViewController()
-            self.navigationItem.largeTitleDisplayMode = .never
             self.navigationController?.pushViewController(calcvc, animated: true)
-        case 6:
-            print("\(indexPath.row)")
+        case 8:
+            let mvc = MatrixViewController()
+            self.navigationController?.pushViewController(mvc, animated: true)
+        case 14:
+            let wikivc = WikiViewController()
+            self.navigationController?.pushViewController(wikivc, animated: true)
         default:
             break
             
@@ -93,7 +95,7 @@ class FunctionsViewController: UIViewController, UITableViewDelegate, UIViewCont
         
         self.navigationController?.navigationBar.prefersLargeTitles = false
         self.navigationItem.largeTitleDisplayMode = .automatic
-        self.navigationItem.title = "Menu"
+        self.navigationItem.title = "My App"
 
     }
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath){

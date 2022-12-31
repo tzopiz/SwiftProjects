@@ -15,6 +15,8 @@
 		0A13141F2935E0580041540E /* MenuDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A13141E2935E0580041540E /* MenuDataSource.swift */; };
 		0A1314242935ED970041540E /* UIAnimation + ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A1314232935ED970041540E /* UIAnimation + ext.swift */; };
 		0A13142B2935FB2B0041540E /* Menu.json in Resources */ = {isa = PBXBuildFile; fileRef = 0A1314292935FB2B0041540E /* Menu.json */; };
+		0A8A87E02960D628003AF506 /* WikiViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A8A87DF2960D628003AF506 /* WikiViewController.swift */; };
+		0A8A87E22960D85A003AF506 /* MatrixViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A8A87E12960D85A003AF506 /* MatrixViewController.swift */; };
 		0AC3F8C52956285200DDB22A /* CalcViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AC3F8C42956285200DDB22A /* CalcViewController.swift */; };
 		0ACFE0262930EEA60013779F /* HistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ACFE0252930EEA60013779F /* HistoryViewController.swift */; };
 		0ACFE0292930F7A90013779F /* FunctionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ACFE0282930F7A90013779F /* FunctionsViewController.swift */; };
@@ -61,6 +63,8 @@
 		0A13141E2935E0580041540E /* MenuDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuDataSource.swift; sourceTree = "<group>"; };
 		0A1314232935ED970041540E /* UIAnimation + ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIAnimation + ext.swift"; sourceTree = "<group>"; };
 		0A1314292935FB2B0041540E /* Menu.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Menu.json; sourceTree = "<group>"; };
+		0A8A87DF2960D628003AF506 /* WikiViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WikiViewController.swift; sourceTree = "<group>"; };
+		0A8A87E12960D85A003AF506 /* MatrixViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatrixViewController.swift; sourceTree = "<group>"; };
 		0AC3F8C42956285200DDB22A /* CalcViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalcViewController.swift; sourceTree = "<group>"; };
 		0ACFE0252930EEA60013779F /* HistoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryViewController.swift; sourceTree = "<group>"; };
 		0ACFE0282930F7A90013779F /* FunctionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FunctionsViewController.swift; sourceTree = "<group>"; };
@@ -118,7 +122,9 @@
 				0A0FDD252936495100C91DF4 /* QViewController.swift */,
 				0A0FDD262936495100C91DF4 /* RViewController.swift */,
 				0A0FDD282936495100C91DF4 /* ZViewController.swift */,
+				0A8A87DF2960D628003AF506 /* WikiViewController.swift */,
 				0AC3F8C42956285200DDB22A /* CalcViewController.swift */,
+				0A8A87E12960D85A003AF506 /* MatrixViewController.swift */,
 			);
 			path = Menu;
 			sourceTree = "<group>";
@@ -278,6 +284,7 @@
 				TargetAttributes = {
 					0ADC33C6292F8F36002D4A8A = {
 						CreatedOnToolsVersion = 14.1;
+						LastSwiftMigration = 1420;
 					};
 					0ADC33DF292F8F38002D4A8A = {
 						CreatedOnToolsVersion = 14.1;
@@ -348,6 +355,7 @@
 				0A13141F2935E0580041540E /* MenuDataSource.swift in Sources */,
 				0ADC3405292F8FEC002D4A8A /* ext.swift in Sources */,
 				0A0FDD2C2936495100C91DF4 /* RViewController.swift in Sources */,
+				0A8A87E22960D85A003AF506 /* MatrixViewController.swift in Sources */,
 				0ADC3404292F8FEC002D4A8A /* UITextField + ext.swift in Sources */,
 				0ADC3407292F8FEC002D4A8A /* UITextView + ext.swift in Sources */,
 				0ACFE0262930EEA60013779F /* HistoryViewController.swift in Sources */,
@@ -360,6 +368,7 @@
 				0A0FDD292936495100C91DF4 /* NViewController.swift in Sources */,
 				0AC3F8C52956285200DDB22A /* CalcViewController.swift in Sources */,
 				0ADC3406292F8FEC002D4A8A /* UIImage + ext.swift in Sources */,
+				0A8A87E02960D628003AF506 /* WikiViewController.swift in Sources */,
 				0ADC3409292F8FEC002D4A8A /* UIButton + ext.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -535,6 +544,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 653PNCT9WW;
@@ -554,6 +564,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = program.Calcalator;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -564,6 +575,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 653PNCT9WW;

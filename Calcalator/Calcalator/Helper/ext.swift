@@ -30,6 +30,9 @@ extension String {
  print(str.substring(to: 5))           // Hello
  print(str.substring(with: 7..<11))    // play
  */
+struct Constants {
+    static let apiUrl = "https://api.unsplash.com/photos/?client_id={Key}&order_by=ORDER&per_page=4"
+}
 func firstNumberOf(string: String, ch: Character) -> Int{
     var i = 0
     for c in string{

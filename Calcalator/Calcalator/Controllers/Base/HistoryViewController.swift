@@ -79,7 +79,7 @@ class HistoryViewController: UIViewController {
         navigationItem.scrollEdgeAppearance = appearance 
         navigationItem.compactAppearance = appearance // For iPhone small navigation bar in landscape.
         
-        self.navigationController?.navigationBar.prefersLargeTitles = true
+        self.navigationController?.navigationBar.prefersLargeTitles = false
         self.navigationItem.largeTitleDisplayMode = .automatic
         self.navigationItem.title = "History"
 

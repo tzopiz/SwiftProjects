@@ -1,14 +1,13 @@
 //
-//  ZViewController.swift
+//  MatrixViewController.swift
 //  Calcalator
 //
-//  Created by Дмитрий Корчагин on 29.11.2022.
+//  Created by Дмитрий Корчагин on 31.12.2022.
 //
 
 import UIKit
 
-class ZViewController: UIViewController, UINavigationControllerDelegate  {
-    let dataSource = MenuDataSource()
+class MatrixViewController: UIViewController, UINavigationControllerDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -19,7 +18,7 @@ class ZViewController: UIViewController, UINavigationControllerDelegate  {
     }
     
     func changeVC(){
-        self.title = "Integer"
+        self.title = "Matrixes"
         let appearance = UINavigationBarAppearance()
         appearance.configureWithOpaqueBackground()
         appearance.backgroundColor = UIColor.white
@@ -29,8 +28,8 @@ class ZViewController: UIViewController, UINavigationControllerDelegate  {
         navigationItem.scrollEdgeAppearance = appearance
         navigationItem.compactAppearance = appearance // For iPhone small navigation bar in landscape.
         
-        self.navigationController?.navigationBar.prefersLargeTitles = true
-        self.navigationItem.largeTitleDisplayMode = .always
+        self.navigationController?.navigationBar.prefersLargeTitles = false
+        self.navigationItem.largeTitleDisplayMode = .automatic
         navigationController?.delegate = self
     }
 }

@@ -82,7 +82,7 @@ class CalcViewController: UIViewController, UIViewControllerTransitioningDelegat
         navigationItem.scrollEdgeAppearance = appearance
         navigationItem.compactAppearance = appearance // For iPhone small navigation bar in landscape.
         
-        self.navigationController?.navigationBar.prefersLargeTitles = true
+        self.navigationController?.navigationBar.prefersLargeTitles = false
         self.navigationItem.largeTitleDisplayMode = .automatic
         navigationController?.delegate = self
     }

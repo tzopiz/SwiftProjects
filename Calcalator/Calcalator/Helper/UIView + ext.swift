@@ -25,6 +25,8 @@ extension UINavigationController {
         navigationBar.shadowImage = UIImage()
     }
 }
+
+
 /*
  self.navigationController?.navigationBar.layer.masksToBounds = false
  self.navigationController?.navigationBar.layer.shadowColor = UIColor.systemBlue.cgColor
